@@ -3,7 +3,7 @@ import "./index.css";
 import "./custom.css";
 import App from "./App.jsx";
 import { BrowserRouter } from "react-router";
-createRoot(document.getElementById("root")).render(
+createRoot(document.querySelector("body")).render(
   <BrowserRouter>
     <App />
   </BrowserRouter>

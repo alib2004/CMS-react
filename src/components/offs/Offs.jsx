@@ -1,10 +1,10 @@
 import React from 'react';
+import ErrorBox from '../errorbox/ErrorBox';
 
 const Offs = () => {
     return (
-        <div>
-            offs
-        </div>
+        <ErrorBox msg="هیچ کد تخفیفی یافت نشد"/>
+
     );
 };
 

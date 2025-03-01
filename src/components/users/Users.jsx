@@ -1,10 +1,10 @@
 import React from 'react';
+import ErrorBox from '../errorbox/ErrorBox';
 
 const Users = () => {
     return (
-        <div>
-            users
-        </div>
+        <ErrorBox msg="هیچ یوزری یافت نشد"/>
+
     );
 };
 

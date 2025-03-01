@@ -1,10 +1,10 @@
 import React from 'react';
+import ErrorBox from '../errorbox/ErrorBox';
 
 const Comments = () => {
     return (
-        <div>
-            comment
-        </div>
+        <ErrorBox msg="هیچ کامنتی یافت نشد"/>
+
     );
 };
 
