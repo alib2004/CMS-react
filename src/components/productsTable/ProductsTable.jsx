@@ -1,15 +1,27 @@
 import { useState } from "react";
 import "./ProductsTable.css";
 import DeleteModal from "../deleteModal/DeleteModal";
-
+import DetailModal from "../detailModal/DetailModal";
+import EditModal from "../EditModal/EditModal";
+import {AiOutlineDollarCircle} from 'react-icons/ai'
 const ProductsTable = () => {
-  const [isShowModal, setIsShowModal] = useState(false);
+  const [isShowdeleteModal, setIsShowdeleteModal] = useState(false);
+  const [isShowdetailModal, setIsShowdetailModal] = useState(false);
+  const [isShoweditModal, setIsShoweditModal] = useState(false);
   const deletemodalCancel = () => {
-    setIsShowModal(false);
+    setIsShowdeleteModal(false);
   };
   const deletemodalSubmit = () => {
-    setIsShowModal(false);
+    setIsShowdeleteModal(false);
   };
+  const closeDetailModal  = ()=>{
+    setIsShowdetailModal(false)
+  }
+  const updateProductInfo = (e)=>{
+    console.log('edited');
+    e.preventDefault()
+    
+  }
   return (
     <>
       <table className="products-table">
@@ -34,20 +46,51 @@ const ProductsTable = () => {
             <td>100،000 تومن</td>
             <td>90</td>
             <td>
-              <button className="products-table-btn">جزئیات</button>
+              <button className="products-table-btn" onClick={()=>setIsShowdetailModal(true)}>جزئیات</button>
               <button
                 className="products-table-btn"
-                onClick={() => setIsShowModal(true)}
+                onClick={() => setIsShowdeleteModal(true)}
               >
                 حذف
               </button>
-              <button className="products-table-btn">ویرایش</button>
+              <button className="products-table-btn" onClick={()=> setIsShoweditModal(true)}>ویرایش</button>
             </td>
           </tr>
         </tbody>
       </table>
-      {isShowModal && (
+      {isShowdeleteModal && (
         <DeleteModal cancel={deletemodalCancel} submit={deletemodalSubmit} />
+      )}
+      {isShowdetailModal && (
+        <DetailModal onhide={closeDetailModal} />
+      )}
+      {isShoweditModal && (
+        <EditModal onClose={()=> setIsShoweditModal(false)}  onSubmit={updateProductInfo}>
+          <div className="edit-products-form-group">
+          <span>
+            <AiOutlineDollarCircle/>
+          </span>
+          <input type="text" placeholder="عنوان جدید را وارد کنید" className="edit-products-input"/>
+          </div>
+          <div className="edit-products-form-group">
+          <span>
+            <AiOutlineDollarCircle/>
+          </span>
+          <input type="text" placeholder="عنوان جدید را وارد کنید" className="edit-products-input"/>
+          </div>
+          <div className="edit-products-form-group">
+          <span>
+            <AiOutlineDollarCircle/>
+          </span>
+          <input type="text" placeholder="عنوان جدید را وارد کنید" className="edit-products-input"/>
+          </div>
+          <div className="edit-products-form-group">
+          <span>
+            <AiOutlineDollarCircle/>
+          </span>
+          <input type="text" placeholder="عنوان جدید را وارد کنید" className="edit-products-input"/>
+          </div>
+        </EditModal>
       )}
     </>
   );
